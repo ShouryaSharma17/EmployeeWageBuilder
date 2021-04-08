@@ -1,25 +1,23 @@
-import java.util.Random;
+import java.util.*;
 
 public class EmpWage {
 
-        public static int calculateEmpWage(){
+        public static int calculateEmpWage(String companyName, int wagePerHr, int maxWorkingDays, int maxHr){
             Random random = new Random();
             
             //constants
             int FULL_DAY_HR = 8;
             int PART_TIME_HR = 4;
-            int WAGE_PER_HR = 20;
-            int MAX_WORKING_DAYS = 20;
-            int MAX_HR = 100;
-
+            
             //variables
             int totalWorkingDays = 0;
             int empHr = 0;
             int totalWageOfMonth = 0;
             int salary=0;
             int totalEmpHr=0;
+            
             //Calculation Part
-            while (totalWorkingDays < MAX_WORKING_DAYS &&  totalEmpHr<= MAX_HR) {
+            while (totalWorkingDays < maxWorkingDays &&  totalEmpHr<= maxHr) {
                 totalWorkingDays++;
                 int ranNum = random.nextInt(3);
 
@@ -36,16 +34,18 @@ public class EmpWage {
                         empHr = 0;
                         break;
                 }
-                salary=empHr*WAGE_PER_HR;
+                salary=empHr*wagePerHr;
                 totalWageOfMonth += salary;
-                System.out.println("Day#: " +totalWorkingDays+" Emp Hrs: "+empHr+" Emp Wages: "+salary);
+                
             }
-
-            System.out.println("salary for the month is " + totalWageOfMonth);
+            
+            System.out.println("salary for the month for Company "+companyName+" is "+ totalWageOfMonth);
             return totalWageOfMonth;
         }
         public static void main(String args[]){
-            calculateEmpWage();
+            calculateEmpWage("Dmart",10,25,150);
+            calculateEmpWage("Reliance",20,20,100);
         }
     }
+
 
